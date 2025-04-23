@@ -1,27 +1,30 @@
+interface A{
+    // All the variables inside interface are final and static
 
+    int age=23;
+    String area="Mumbai";
 
-abstract class A{
-    public abstract void  show();
-    public abstract void config();
+    void show();
+    void config();
+    // even if we dont mention methods to be abstract they are public abstract by default in an interface.
 }
-// class B extends A{
-//     public void show(){
-//         System.out.println("In B show ");
-//     }
-// }
-// Since we have to use the method only one time so we can use anonymous functions
 
+class B implements A{
+    public void show(){
+        System.out.println("In show");
+    }
+
+    public void config(){
+        System.out.println("In config");
+    }
+}
 public class Demo{
     public static void main(String[] args) {
-        A obj = new A(){ // Here we are not creating the object of class A but we are creating an object of inner class A
-            public void show(){
-        System.out.println("In new show ");
-    }
-        public void config(){
-            System.out.println("This is config");
-        }
-    };
-        obj.show();
-        obj.config();
+       A obj;
+    //    obj= new A();
+    obj = new B();
+    obj.show();
+    obj.config();
+    System.out.println(A);
     }
 }
