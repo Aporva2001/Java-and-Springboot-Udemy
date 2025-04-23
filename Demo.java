@@ -1,52 +1,27 @@
-// // we can also define a class inside another class it is called the inner class
-// // we use inner class when we have no other use of the inner class than to use the properties of the outer class
-// class A{
-//     int age;
-//     public void show(){
-//         System.out.println("In show");
-//     }
 
-//    static class B{
-//         public void config(){
-//             System.out.println("Inside the method config");
-//         }
+
+abstract class A{
+    public abstract void  show();
+    public abstract void config();
+}
+// class B extends A{
+//     public void show(){
+//         System.out.println("In B show ");
 //     }
 // }
+// Since we have to use the method only one time so we can use anonymous functions
 
-class A{
-    public void show(){
-        System.out.println("In A show");
-    }
-}
 public class Demo{
     public static void main(String[] args) {
-    //     A obj= new A();
-    //     obj.show();
-
-    //     // A.B obj1= obj.new B(); // Creating the object of an inner class B
-    //     A.B obj1= new A.B();
-    //     obj1.config();
-
-    // If we want to override the behaviour of show and provide it with a different implementation then
-    A obj= new A(){ // This is called the anonymous class.
-        public void show(){
-        System.out.println("In new show");
+        A obj = new A(){ // Here we are not creating the object of class A but we are creating an object of inner class A
+            public void show(){
+        System.out.println("In new show ");
     }
+        public void config(){
+            System.out.println("This is config");
+        }
     };
-    obj.show();
-
-    }
-}
-public class Demo{
-
-    public static void main(String[] args) {
-        StringBuffer sb= new StringBuffer("Aporva"); // StringBuffer or StringBuilders are used to create mutable strings in java.
-
-        // System.err.println(sb.capacity()); //By default the capacity of the string is 16
-        // 16 size is provided by default in stringBuffer because if contigous allocation is done, then there may the problem associated with the size available, so to avoid that a buffer is provided.
-        sb.append(" Goyal");
-        sb.deleteCharAt(0);
-        sb.insert(0,"Java");
-        System.err.println(sb);
+        obj.show();
+        obj.config();
     }
 }
