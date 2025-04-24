@@ -1,6 +1,6 @@
 @FunctionalInterface
 interface  A{
-    void show();
+    void show(int i);
     // void run();
 }
 
@@ -11,12 +11,11 @@ interface  A{
 // }
 public class Demo{
     public static void main(String args[]){
-       A obj= new A()
-       {
-            public void show(){
+       A obj= i -> 
+    //    {   // -> means that it is a lamda expression
+
                 System.out.println("In show");
-            }
-       };
-       obj.show();
+            // };
+       obj.show(5);
+       }
     }
-}
