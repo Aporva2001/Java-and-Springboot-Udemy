@@ -1,20 +1,22 @@
-class A{
-    public void showTheDataWhichBelongsToThisClass(){
-        System.out.println("In a show");
-    }
+@FunctionalInterface
+interface  A{
+    void show();
+    // void run();
 }
 
-class B{
-    
-    @Override // Here we are telling the compiler that we want to override this method  
-public void showTheDataWhichBelongsToThisClass(){
-        System.out.println("In B show");
-    }
-}
-
+// class B implements  A{
+//     public void show(){
+//         System.out.println("In show");
+//     }
+// }
 public class Demo{
     public static void main(String args[]){
-        B obj = new B();
-        obj.showTheDataWhichBelongsToThisClass();
+       A obj= new A()
+       {
+            public void show(){
+                System.out.println("In show");
+            }
+       };
+       obj.show();
     }
 }
