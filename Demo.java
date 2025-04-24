@@ -1,19 +1,20 @@
-enum Status{
-    Running, Failed, Success,Pending;
+class A{
+    public void showTheDataWhichBelongsToThisClass(){
+        System.out.println("In a show");
+    }
 }
 
-class Demo{
-    public static void main(String[] args) {
-        // Status s= Status.Running;
-        // If we want to get all the values then we will use values() method
-        Status ss[] = Status.values();
-        // System.out.println(ss[1]);
+class B{
+    
+    @Override // Here we are telling the compiler that we want to override this method  
+public void showTheDataWhichBelongsToThisClass(){
+        System.out.println("In B show");
+    }
+}
 
-        for(Status s : ss){
-            System.out.println(s);
-        }
-        // System.out.println(s);
-        // System.out.println(s.ordinal()); // This method returns a  number associated with an enum item
-
+public class Demo{
+    public static void main(String args[]){
+        B obj = new B();
+        obj.showTheDataWhichBelongsToThisClass();
     }
 }
