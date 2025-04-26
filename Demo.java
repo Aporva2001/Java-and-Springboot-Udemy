@@ -1,45 +1,33 @@
 
-import java.awt.font.NumericShaper;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class Demo{
     public static void main(String[] args) {
-        // Collection does not support index values
-        // Lists support index values
+        // Map<String,Integer> students= new HashMap<>();
+    Map<String,Integer> students= new Hashtable<>();
 
-        // Collection<Integer> nums= new ArrayList<Integer>();
-        // List<Integer> nums= new ArrayList<Integer>();
-        // Set <Integer> nums= new HashSet<Integer>(); // Sets will eliminate the duplicates
+    // Hashtable is synchronised whereas HashMap is not
+    
+        students.put("Asd",56);
+        students.put("Asdf",55);
+        students.put("Agd",14);
+        students.put("sdf",78);
+        students.put("Agd",45);
+        // Keys are unique
 
-        // If we want a set with sorted values we will use TreeSet()
+        // students.add() means we are adding a new element
+        // students.put() means if we dont have the element add it otherwise update it
 
-        Set<Integer> nums= new TreeSet<Integer>();
+        System.out.println(students);
 
-        nums.add(6); // These values are not numbers they are object types so to use numbers we need to specify the datatype in 
-        // angular brackets
+        // To get all the keys
+        System.out.println(students.keySet());
+        // System.out.println(students.get("Asd"));
 
-        nums.add(7);
-        nums.add(2);
-        nums.add(1);
-        nums.add(6); // Lists support multiple values
-        // Sets do not have index values
-
-
-        Iterator<Integer> values= nums.iterator(); 
-
-        while(values.hasNext()){
-            System.out.println(values.next());
+        for(String key: students.keySet()){
+            System.out.println(key + " " + students.get(key));
         }
-        // for(int i: nums){
-        //     System.out.println(i);
-        // }
-        // System.out.println(nums.get(1));
-        // System.out.println(nums); // We cannot directly print the original arrays but here it is possible
     }
 }
