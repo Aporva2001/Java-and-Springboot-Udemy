@@ -1,44 +1,26 @@
-class Counter{
-    int count;
-    public synchronized void increment(){
-        count++;
-    }
-}
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class Demo{
-    public static void main(String args[]) throws InterruptedException{
-        Counter c= new Counter();
+    public static void main(String[] args) {
+        // Collection does not support index values
+        // Lists support index values
 
-        Runnable obj1= () -> {
-        for(int i=1;i<=10000;i++)
-        {
-            c.increment();
-        }
-    };
-        Runnable obj2= () -> {
-        for(int i=1;i<=10000;i++)
-        {
-            c.increment();
-        }
-    };
-       Thread t1= new Thread(obj1); // NEW state
-        Thread t2= new Thread(obj2);
-        t1.start(); // RUNNABLE state
-        // when the thread is executing run() it is in RUNNING STATE
-        t2.start();
+        // Collection<Integer> nums= new ArrayList<Integer>();
+        List<Integer> nums= new ArrayList<Integer>();
+        nums.add(6); // These values are not numbers they are object types so to use numbers we need to specify the datatype in 
+        // angular brackets
 
-        // join method allows the threads to complete and join the main thread
+        nums.add(7);
+        nums.add(2);
+        nums.add(1);
 
-        // sleep() and wait() changes the state of thread to  WAITING state, now if we want to rerun our thread we have to
-        // use notify() method and this method will convert the state of the thread from waiting state to runnable state
-
-        // if we want a thread to goto dead state we use stop() method, IT IS NOT GOOD PRACTICE AS IT CAUSES INCONSISTENCIES
-        // IN OUR SYSTEM
-        
-        t1.join();
-        t2.join();
-        
-        System.out.println(c.count); // Here the main thread is not waiting for the t1 and t2 threads to wait for them to finish
-
-       }    
+        // for(int i: nums){
+        //     System.out.println(i);
+        // }
+        System.out.println(nums.get(1));
+        // System.out.println(nums); // We cannot directly print the original arrays but here it is possible
     }
+}
