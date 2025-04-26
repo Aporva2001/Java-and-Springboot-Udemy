@@ -21,12 +21,20 @@ public class Demo{
             c.increment();
         }
     };
-       Thread t1= new Thread(obj1);
+       Thread t1= new Thread(obj1); // NEW state
         Thread t2= new Thread(obj2);
-        t1.start();
+        t1.start(); // RUNNABLE state
+        // when the thread is executing run() it is in RUNNING STATE
         t2.start();
 
         // join method allows the threads to complete and join the main thread
+
+        // sleep() and wait() changes the state of thread to  WAITING state, now if we want to rerun our thread we have to
+        // use notify() method and this method will convert the state of the thread from waiting state to runnable state
+
+        // if we want a thread to goto dead state we use stop() method, IT IS NOT GOOD PRACTICE AS IT CAUSES INCONSISTENCIES
+        // IN OUR SYSTEM
+        
         t1.join();
         t2.join();
         
