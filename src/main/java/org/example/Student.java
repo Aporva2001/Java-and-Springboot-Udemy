@@ -1,15 +1,21 @@
 package org.example;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Student {
+    @Id
     private int rollNo;
     private String sName;
+    private int sAge;
 
-    public int getRollNo() {
-        return rollNo;
+    public int getsAge() {
+        return sAge;
     }
 
-    public void setRollNo(int rollNo) {
-        this.rollNo = rollNo;
+    public void setsAge(int sAge) {
+        this.sAge = sAge;
     }
 
     public String getsName() {
@@ -20,13 +26,14 @@ public class Student {
         this.sName = sName;
     }
 
-    public int getsAge() {
-        return sAge;
+    public int getRollNo() {
+        return rollNo;
     }
 
-    public void setsAge(int sAge) {
-        this.sAge = sAge;
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
     }
+
 
     @Override
     public String toString() {
@@ -37,5 +44,4 @@ public class Student {
                 '}';
     }
 
-    private int sAge;
 }
