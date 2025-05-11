@@ -14,11 +14,19 @@ public class Main {
                 .buildSessionFactory();
 
         Session session = sf.openSession();
-//        Laptop laptop= session.load(Laptop.class,2);
-        // Since the load is deprecated we have to use byId
-        Laptop laptop= session.byId(Laptop.class).getReference(2);
-        System.out.println(laptop);
+        Laptop l1= session.get(Laptop.class, 2);
+        System.out.println(l1);
+
+//        Laptop l2= session.get(Laptop.class,2);
+//        System.out.println(l2);
+
+        // It will execute the query only once because of l1 cache
         session.close();
+
+        Session session1= sf.openSession();
+        Laptop l3= session1.get(Laptop.class,2);
+        System.out.println(l3);
+        session1.close();
 
         sf.close();
 

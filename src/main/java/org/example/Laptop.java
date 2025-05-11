@@ -1,13 +1,12 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+// Here we have to implement that we are using level 2 cache
+@Cacheable
 public class Laptop {
 
     @Id
