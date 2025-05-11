@@ -1,20 +1,28 @@
 package org.example;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
+import java.util.List;
 
-// If we want to set another name for the entity
-//@Entity(name = "alien_table")
 @Entity
-
 public class Alien {
 
     @Id
     private int aid;
     private String aname;
     private String tech;
-    @OneToOne
-    private Laptop laptop;
+    @OneToMany(mappedBy = "alien")
+    private List<Laptop> laptops;
+
+    public List<Laptop> getLaptops() {
+        return laptops;
+    }
+
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
+    }
 
     public int getAid() {
         return aid;
@@ -22,14 +30,6 @@ public class Alien {
 
     public void setAid(int aid) {
         this.aid = aid;
-    }
-
-    public String getAname() {
-        return aname;
-    }
-
-    public void setAname(String aname) {
-        this.aname = aname;
     }
 
     public String getTech() {
@@ -40,12 +40,12 @@ public class Alien {
         this.tech = tech;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public String getAname() {
+        return aname;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setAname(String aname) {
+        this.aname = aname;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Alien {
                 "aid=" + aid +
                 ", aname='" + aname + '\'' +
                 ", tech='" + tech + '\'' +
-                ", laptop=" + laptop +
+                ", laptops=" + laptops +
                 '}';
     }
 }
