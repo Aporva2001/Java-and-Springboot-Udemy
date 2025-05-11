@@ -8,31 +8,23 @@ import org.hibernate.cfg.Configuration;
 public class Main {
     public static void main(String[] args) {
 
-        Student s1 = new Student();
-        s1.setRollNo(105);
-        s1.setsName("Aman");
-        s1.setsAge(23);
-//        Configuration cfg = new Configuration();
-//        cfg.addAnnotatedClass(org.example.Student.class);
-//        cfg.configure("hibernate.cfg.xml");
-
-        // If we want to write the above 3 lines in one go then
-
+//        Student s1 = new Student();
+//        s1.setRollNo(105);
+//        s1.setsName("Aman");
+//        s1.setsAge(23);
+        Student s2 = null;
         SessionFactory sf = new Configuration().addAnnotatedClass(org.example.Student.class).configure().buildSessionFactory();
-
-                // cfg.buildSessionFactory(); // Here either we use try with resources or we can use session.close()
-
         Session session = sf.openSession();
-        Transaction transaction = session.beginTransaction();
+        // we dont need transasctions when we are getting the data from the database
 
-//        session.save(s1);
-        // Instead of save() we have to use persist as it follows the JPA conventions
+        // Transaction transaction = session.beginTransaction();
+//        session.persist(s1);
+        //transaction.commit();
 
-        session.persist(s1);
-        transaction.commit();
+        s2 = session.get(Student.class, 102); // Student.class is the type of data which we want to fetch and 102 is the primary key
         session.close();
         sf.close();
-        System.out.println(s1);
+        System.out.println(s2);
 
     }
 
