@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Laptop l1 = new Laptop();
 
+        l1.setLid(1);
         l1.setBrand("Asus");
         l1.setModel("rog");
         l1.setRam(16);
@@ -18,12 +19,16 @@ public class Main {
         a1.setAname("Aporva");
         a1.setTech("Java");
         a1.setLaptop(l1);
-        SessionFactory sf = new Configuration().addAnnotatedClass(org.example.Alien.class).configure().buildSessionFactory();
+        SessionFactory sf = new Configuration().addAnnotatedClass(Alien.class)
+                .addAnnotatedClass(Laptop.class)
+                .configure().buildSessionFactory();
         Session session = sf.openSession();
 
         Transaction transaction= session.beginTransaction();
 
+        session.persist(l1);
         session.persist(a1);
+
 
         transaction.commit();
 
