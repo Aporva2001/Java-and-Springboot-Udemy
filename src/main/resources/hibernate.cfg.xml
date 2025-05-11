@@ -6,7 +6,7 @@
         <property name="hibernate.connection.password">password</property>
 
 
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 <!--        This is used if we want to see the query -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
