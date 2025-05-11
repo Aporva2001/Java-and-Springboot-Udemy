@@ -9,8 +9,8 @@ public class Main {
     public static void main(String[] args) {
 
         Student s1 = new Student();
-        s1.setRollNo(101);
-        s1.setsName("Navin");
+        s1.setRollNo(104);
+        s1.setsName("Sam");
         s1.setsAge(30);
         Configuration cfg = new Configuration();
         cfg.addAnnotatedClass(org.example.Student.class);
