@@ -16,16 +16,6 @@ public class Laptop {
     private String model;
     private int ram;
 
-    @ManyToMany(mappedBy = "laptops")
-    private List<Alien> aliens;
-
-    public List<Alien> getAliens() {
-        return aliens;
-    }
-
-    public void setAliens(List<Alien> aliens) {
-        this.aliens = aliens;
-    }
 
     public int getLid() {
         return lid;

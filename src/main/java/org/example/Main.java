@@ -37,18 +37,12 @@ public class Main {
         a2.setAid(102);
         a2.setAname("Navin");
         a2.setTech("Java");
-        Alien a3 = new Alien();
-        a3.setAid(103);
-        a3.setAname("Navin");
-        a3.setTech("Java");
-
         a1.setLaptops(Arrays.asList(l1, l2));
-        a2.setLaptops(Arrays.asList(l2, l3));
-        a3.setLaptops(Arrays.asList(l1));
+        a2.setLaptops(Arrays.asList(l3));
 
-        l1.setAliens(Arrays.asList(a1,a3));
-        l2.setAliens(Arrays.asList(a1,a2));
-        l3.setAliens(Arrays.asList(a2));
+//        l1.setAliens(Arrays.asList(a1,a3));
+//        l2.setAliens(Arrays.asList(a1,a2));
+//        l3.setAliens(Arrays.asList(a2));
 
 
 
@@ -67,13 +61,22 @@ public class Main {
 
         session.persist(a1);
         session.persist(a2);
-        session.persist(a3);
 
         transaction.commit();
 
-        Alien a5 = session.get(Alien.class, 101);
-        System.out.println(a5);
+
+        // Here it will not fire a new query but look for the same query in the current session if we want the query to fire then we have to use seperate session
+
+//        System.out.println(a5);
         session.close();
+        Session session1= sf.openSession();
+        Alien a5 = session1.get(Alien.class, 101);
+//        If an entity contains a collection then it will fetch the details related to that entity only
+        // not related to a collection, this is called lazy fetching, if we want the data then we can use
+        // System.out.println() to fetch the data related to the collection
+
+//        System.out.println(a5);
+        session1.close();
         sf.close();
 
 

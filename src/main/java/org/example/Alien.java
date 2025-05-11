@@ -1,9 +1,6 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -14,7 +11,9 @@ public class Alien {
     private int aid;
     private String aname;
     private String tech;
-    @ManyToMany
+//    @OneToMany
+    // If we want eager fetching, by default it is lazy fetching
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Laptop> laptops;
 
     public List<Laptop> getLaptops() {
