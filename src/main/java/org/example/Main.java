@@ -7,24 +7,25 @@ import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args) {
+        // If we want to update a record first we have to create the object of that
 
-//        Student s1 = new Student();
-//        s1.setRollNo(105);
-//        s1.setsName("Aman");
-//        s1.setsAge(23);
-        Student s2 = null;
+        Student s1= new Student();
+//        s1.setsName("Sumit");
+//        s1.setRollNo(109);
+//        s1.setsAge(25);
         SessionFactory sf = new Configuration().addAnnotatedClass(org.example.Student.class).configure().buildSessionFactory();
         Session session = sf.openSession();
-        // we dont need transasctions when we are getting the data from the database
 
-        // Transaction transaction = session.beginTransaction();
-//        session.persist(s1);
-        //transaction.commit();
+        Transaction transaction= session.beginTransaction();
+        session.merge(s1); // This is used to change the data from the database, if we dont have data it will add it
+        // In case of delete if we dont have the data then first we have to get it in an object and then we have to pass it to the remove function
+        s1= session.get(Student.class,109);
 
-        s2 = session.get(Student.class, 102); // Student.class is the type of data which we want to fetch and 102 is the primary key
+        session.remove(s1);
+        transaction.commit();
         session.close();
         sf.close();
-        System.out.println(s2);
+        System.out.println(s1);
 
     }
 
