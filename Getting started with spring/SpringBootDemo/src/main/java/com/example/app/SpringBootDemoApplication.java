@@ -18,9 +18,13 @@ public class SpringBootDemoApplication {
 		Alien obj = context.getBean(Alien.class);
 		obj.code();
 
-		Alien obj2= context.getBean(Alien.class);
-		obj2.code();
+//		Alien obj2= context.getBean(Alien.class);
+//		obj2.code();
 //		System.out.println("Hello");
-	}
 
+	// Laptop class can be used here because here
+	// we do have the container access
+//	Laptop laptop= context.getBean(Laptop.class);
+//		laptop.compile();
+	}
 }
