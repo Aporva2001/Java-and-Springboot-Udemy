@@ -5,37 +5,22 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-<bean id="alien1" class="org.example.Alien" autowire="byName">
-<!--    <property name="age" value="21">  &lt;!&ndash; Here we have injected the value of age, this is only for primitive types&ndash;&gt;-->
+<bean id="alien1" class="org.example.Alien" autowire="byType">
 
-<!--    </property>-->
-<!--    If we want to inject the values with the help of constructors-->
-<!--    <constructor-arg value="21"/>-->
-<!--    Here it will check the sequence, the first value will go to the first parameter in the constructor and the second one will go to the second one-->
-<!--    <constructor-arg value="21"/>-->
-<!--    <constructor-arg ref="lap1"/>-->
-<!--    To avoid this problem we have to mention the type-->
-<!--    This approach will work only when we have different type of data-->
-<!--    <constructor-arg type="int" value="21"/>-->
-<!--    <constructor-arg type="org.example.Laptop" ref="lap1"/>-->
-
-<!--    To avoid this problem we have to use indexing which follows the sequence number-->
-<!--    <constructor-arg index="1" value="21"/>-->
-<!--    <constructor-arg index="0" ref="lap1"/>-->
-<!--If we want to use name then we have to specify the sequence-->
-
-<!--    <constructor-arg name="age" value="21"/>-->
-<!--    <constructor-arg name="lap" ref="lap1"/>-->
-
-    <!--    If we dont want to follow the sequence then we have to add annotation before the parameterised constructor
--->
-<!--    <constructor-arg name="age" value="21"/>-->
-<!--    <constructor-arg name="lap" ref="lap1"/>-->
     <property name="age" value="21"/>
 <!--    <property name="com" ref="com">  &lt;!&ndash;Here we are creating a wire but we want the spring to do this automatically if the name and ref are same&ndash;&gt;-->
 <!--    </property>-->
 </bean>
-    <bean id="com" class="org.example.Laptop">
+
+<!--    <bean id="com1" class="org.example.Laptop">-->
+<!--    </bean>-->
+<!--    <bean id="com2" class="org.example.Desktop">-->
+<!--    </bean>-->
+<!--    To avoid this error we have to make one of the bean as primary-->
+<!--    Primary works only if we have a confusion, if we specify explicity then spring will go for that particular bean-->
+    <bean id="com1" class="org.example.Laptop" primary="true">
+    </bean>
+    <bean id="com2" class="org.example.Desktop">
     </bean>
 
 </beans>
