@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
     public static void main(String[] args) {
         ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
+        // If we are not using lazy init bean then the line above will create the objects for all the beans
+        // no matter we are using the beans or not
 
         Alien obj1= (Alien) context.getBean("alien1");
 //        obj1.age=21;

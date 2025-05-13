@@ -20,7 +20,8 @@
 <!--    Primary works only if we have a confusion, if we specify explicity then spring will go for that particular bean-->
     <bean id="com1" class="org.example.Laptop" primary="true">
     </bean>
-    <bean id="com2" class="org.example.Desktop">
+    <bean id="com2" class="org.example.Desktop" lazy-init="true">
+<!--        Here this bean will be used only when we want to use it-->
     </bean>
 
 </beans>
