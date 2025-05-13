@@ -6,10 +6,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
     public static void main(String[] args) {
         ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
-        // If we are not using lazy init bean then the line above will create the objects for all the beans
-        // no matter we are using the beans or not
 
-        Alien obj1= (Alien) context.getBean("alien1");
+//        Alien obj1= (Alien) context.getBean("alien1");
+        // If we directly want to get the object without doing typecasting here
+//        Alien obj1= context.getBean("alien1", Alien.class);
+        // If we dont give the bean name then it will search by type
+        Alien obj1= context.getBean(Alien.class);
 //        obj1.age=21;
 //        obj1.setAge(21);
         System.out.println(obj1.getAge());
