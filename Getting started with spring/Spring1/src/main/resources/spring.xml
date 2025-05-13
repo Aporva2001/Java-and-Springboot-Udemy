@@ -5,19 +5,12 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-<bean id="alien1" class="org.example.Alien" scope="prototype">
-<!--Here the default scope is singleton scope as if for any number of object references we always get the same value
--->
+<!--<bean id="alien1" class="org.example.Alien" scope="prototype">-->
+<bean id="alien1" class="org.example.Alien">
+    <property name="age" value="21">  <!-- Here we have injected the value of age-->
+
+    </property>
 </bean>
-
-<!--    If we want a different object to be created everytime ww use getBean() we have to use scope type as prototype-->
-<!--    <bean id="alien2" class="org.example.Alien" scope="prototype">-->
-
-<!--    </bean>-->
-<!--    <bean id="alien2" class="org.example.Alien">-->
-
-<!--    </bean>-->
-<!--    If we mention 2 beans with 2 different ids it will create 2 different objects for us-->
     <bean id="lap" class="org.example.Laptop">
 
     </bean>
