@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-<bean id="alien1" class="org.example.Alien">
+<bean id="alien1" class="org.example.Alien" autowire="byName">
 <!--    <property name="age" value="21">  &lt;!&ndash; Here we have injected the value of age, this is only for primitive types&ndash;&gt;-->
 
 <!--    </property>-->
@@ -29,14 +29,13 @@
 
     <!--    If we dont want to follow the sequence then we have to add annotation before the parameterised constructor
 -->
-    <constructor-arg name="age" value="21"/>
-    <constructor-arg name="lap" ref="lap1"/>
-<!--    <property name="lap" ref="lap1">  &lt;!&ndash;for reference types we have to use refs&ndash;&gt;-->
-
+<!--    <constructor-arg name="age" value="21"/>-->
+<!--    <constructor-arg name="lap" ref="lap1"/>-->
+    <property name="age" value="21"/>
+<!--    <property name="com" ref="com">  &lt;!&ndash;Here we are creating a wire but we want the spring to do this automatically if the name and ref are same&ndash;&gt;-->
 <!--    </property>-->
 </bean>
-    <bean id="lap1" class="org.example.Laptop">
-
+    <bean id="com" class="org.example.Laptop">
     </bean>
 
 </beans>

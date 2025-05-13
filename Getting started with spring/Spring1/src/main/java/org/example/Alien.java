@@ -22,7 +22,7 @@ public class Alien {
     }
 
     public Alien(){
-        System.out.println("Object Created");
+//        System.out.println("Object Created");
     }
 //@ConstructorProperties({"age","lap"})
 //    public Alien(int age,Laptop lap){
