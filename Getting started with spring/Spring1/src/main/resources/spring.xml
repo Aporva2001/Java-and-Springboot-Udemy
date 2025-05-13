@@ -5,8 +5,15 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-<bean id="alien" class="org.example.Alien">
+<bean id="alien1" class="org.example.Alien">
 
 </bean>
+<!--    <bean id="alien2" class="org.example.Alien">-->
+
+<!--    </bean>-->
+<!--    If we mention 2 beans with 2 different ids it will create 2 different objects for us-->
+    <bean id="lap" class="org.example.Laptop">
+
+    </bean>
 
 </beans>

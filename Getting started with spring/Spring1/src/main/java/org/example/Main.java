@@ -7,13 +7,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        // If we want to create a container, we have to use an application context, to use application context, we have to use external dependencies of spring
+        ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml"); // The object is created in this line
+        Alien obj= (Alien) context.getBean("alien1");
 
-        ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml"); // Here we have to mention the configuration file
-        //now we can specify the object we want
-        Alien obj= (Alien) context.getBean("alien");
-        // alien refers to the name of the object
-        // here the required type is object but we need the object of type Alien so we have to type cast it
+        Alien obj2= (Alien) context.getBean("alien1");
+        // the object will be created 2 time
+        Laptop obj1 = (Laptop) context.getBean("lap");
 //        Alien obj = new Alien();
         obj.code();
         }
