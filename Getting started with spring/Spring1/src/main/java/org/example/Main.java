@@ -10,10 +10,14 @@ public class Main {
         // If we want to use java based approach for configuration
         ApplicationContext context= new AnnotationConfigApplicationContext(AppConfig.class);
 //        Desktop dt= context.getBean("Beast",Desktop.class);
-        Desktop dt= context.getBean("desktop",Desktop.class);
+        Desktop dt= context.getBean(Desktop.class);
         // Here desktop1 is the bean name
 
         dt.compile();
+        Desktop dt1= context.getBean(Desktop.class);
+        // Here desktop1 is the bean name
+
+        dt1.compile();
 
 
 
