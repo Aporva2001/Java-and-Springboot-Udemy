@@ -3,39 +3,55 @@ package org.example;
 import org.example.config.AppConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 public class Main {
     public static void main(String[] args) {
-        // If we want to use java based approach for configuration
-        ApplicationContext context= new AnnotationConfigApplicationContext(AppConfig.class);
-//        Desktop dt= context.getBean("Beast",Desktop.class);
-//        Desktop dt= context.getBean(Desktop.class);
-//        // Here desktop1 is the bean name
-//
-//        dt.compile();
-//        Desktop dt1= context.getBean(Desktop.class);
-//        // Here desktop1 is the bean name
 
-//        dt1.compile();
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        Alien obj1= context.getBean(Alien.class);
+        Alien obj1 = context.getBean(Alien.class);
         System.out.println(obj1.getAge());
         obj1.code();
 
-//        ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
+
+
+
+
+
+//		Desktop dt = context.getBean("desktop", Desktop.class);
+//		dt.compile();
 //
-////        Alien obj1= (Alien) context.getBean("alien1");
-//        // If we directly want to get the object without doing typecasting here
-////        Alien obj1= context.getBean("alien1", Alien.class);
-//        // If we dont give the bean name then it will search by type
-//        Alien obj1= context.getBean(Alien.class);
-////        obj1.age=21;
-////        obj1.setAge(21);
-//        System.out.println(obj1.getAge());
-//        obj1.code();
-////        Laptop obj1 = (Laptop) context.getBean("lap");
-////        Alien obj = new Alien();
-////        obj.code();
-        }
+//		Desktop dt1 = context.getBean("desktop", Desktop.class);
+//		dt1.compile();
+
+
+
+
+
+
+
+
+
+
+//    	ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");  // create a container
+//    	Alien obj1 = context.getBean("alien1",Alien.class);
+////    	obj1.setAge(21);
+//    	System.out.println(obj1.getAge());
+//
+//    	obj1.code();
+////
+////    	Alien obj2 = (Alien) context.getBean("alien1");
+////    	System.out.println(obj2.age);
+////    	//obj2.code();
+//
+//
+//
+////        Computer com=	context.getBean( Computer.class);
+//
+//
+//
+////    	Desktop obj=(Desktop)context.getBean("com2",Desktop.class);
+////	 Desktop obj= context.getBean( Desktop.class);
     }
+}
