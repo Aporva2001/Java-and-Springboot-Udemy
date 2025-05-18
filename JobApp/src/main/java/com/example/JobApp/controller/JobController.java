@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class JobController {
+public class JobController{
 
     @Autowired
     private JobService service;
