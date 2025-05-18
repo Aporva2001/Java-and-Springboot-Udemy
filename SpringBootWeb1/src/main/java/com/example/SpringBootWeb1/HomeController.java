@@ -29,4 +29,18 @@ public class HomeController {
 
         return mv;
     }
+
+    @RequestMapping("addAlien")
+    // If we want to use different variable name than the query params
+    public ModelAndView addAlien(@RequestParam("aid") int aid, @RequestParam("aname") String aname, ModelAndView mv){
+    Alien alien= new Alien();
+    alien.setAid(aid);
+    alien.setAname(aname);
+        mv.addObject("alien",alien);
+//        System.out.println(result);
+        System.out.println("in add");
+        mv.setViewName("result");
+
+        return mv;
+    }
 }
