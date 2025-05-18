@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 // If we want to tell spring that this is a controller
 @Controller
@@ -16,12 +17,14 @@ public class HomeController {
     }
 
     @RequestMapping("add")
-    public String add(HttpServletRequest req, HttpSession session){
-        // The servlet way of getting the data from the request
-        // If we want to return the data from the page we have to use sessions
-        int num1 = Integer.parseInt(req.getParameter("num1")); // It will return a string
-        int num2 = Integer.parseInt(req.getParameter("num2"));
-        int result = num1 + num2;
+    // If we want to use different variable name than the query params
+    public String add(@RequestParam("num1") int num, @RequestParam("num2") int num2, HttpSession session){
+        // This code is working without HttpServlet but we have to make sure that the name in query params and the name
+        // given here is same
+        // public String add(int num1,int num2, HttpSession session)
+
+
+        int result = num + num2;
 
         session.setAttribute("result",result);
         System.out.println(result);
