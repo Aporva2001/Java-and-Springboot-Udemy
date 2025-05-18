@@ -3,29 +3,44 @@ package com.example.SpringBootWeb1;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-// If we want to tell spring that this is a controller
 @Controller
 public class HomeController {
-    // If we want to map the request to the home page
+    // If we want to use ModelAttribute on function level
+    @ModelAttribute("course")
+    public String courseName(){
+        return "Java";
+    }
     @RequestMapping("/")
     public String home(){
         System.out.println("Home method called");
-        return "index.jsp";
+        return "index";
     }
 
     @RequestMapping("add")
-    public String add(HttpServletRequest req, HttpSession session){
-        // The servlet way of getting the data from the request
-        // If we want to return the data from the page we have to use sessions
-        int num1 = Integer.parseInt(req.getParameter("num1")); // It will return a string
-        int num2 = Integer.parseInt(req.getParameter("num2"));
-        int result = num1 + num2;
+    // If we want to use different variable name than the query params
+    public ModelAndView add(@RequestParam("num1") int num, @RequestParam("num2") int num2, ModelAndView mv){
+        int result = num + num2;
 
-        session.setAttribute("result",result);
+        mv.addObject("result",result);
         System.out.println(result);
         System.out.println("in add");
-        return "result.jsp";
+        mv.setViewName("result");
+
+        return mv;
+    }
+
+    @RequestMapping("addAlien")
+    // If we want to use different name other than alien
+//    public String addAlien(@ModelAttribute("alien1") Alien alien){
+    // If we dont want to have the same name we can skip the model attribute
+    public String addAlien(Alien alien){
+        System.out.println("in add alien");
+        return "result";
     }
 }
