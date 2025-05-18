@@ -7,6 +7,7 @@
 <h2> Welcome to the application </h2>
 
 <p>${alien} </p>
+<h2> ${course} </h2>
 
 </body>
 </html>
