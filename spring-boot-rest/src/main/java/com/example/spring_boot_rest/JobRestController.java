@@ -18,7 +18,7 @@ public class JobRestController {
     @Autowired
     private JobService service;
 
-    @GetMapping("jobPosts")
+    @GetMapping(path = "jobPosts",produces = {"application/json"}) // This method will only return json
 //    @ResponseBody
     // if we are using response body we don't have to use rest controller
     public List<JobPost> getAllJobs(){
@@ -29,9 +29,20 @@ public class JobRestController {
     public JobPost getJob(@PathVariable("postId") int postId){
         return service.getJob(postId);
     }
-    @PostMapping("jobPost")
+    @PostMapping(path = "jobPost",consumes = {"application/xml"}) // This method will accept only xml data
+
     public JobPost addJob(@RequestBody JobPost jobPost){
         service.addJob(jobPost);
         return service.getJob(jobPost.getPostId());
+    }
+    @PutMapping("jobPost")
+    public JobPost updateJob(@RequestBody JobPost jobPost){
+        service.updateJob(jobPost);
+        return service.getJob(jobPost.getPostId());
+    }
+    @DeleteMapping("jobPost/{postId}")
+    public String deleteJob(@PathVariable("postId") int postId){
+        return service.deleteJob(postId);
+
     }
 }
