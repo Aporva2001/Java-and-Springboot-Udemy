@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.Optional;
+
 @SpringBootApplication
 public class SpringDataJpaApplication {
 
@@ -35,6 +37,15 @@ public class SpringDataJpaApplication {
 		// It is used if we want to fetch all the data
 
 		System.out.println(repo.findAll());
+
+		// If we want to fetch one element as an id
+		System.out.println(repo.findById(103));
+
+		Optional<Student> s= repo.findById(104);
+		// This can handle null values
+		System.out.println(s.orElse(new Student()));
+		// It means if student is null return the new blank object for that case
+
 	}
 
 }
