@@ -41,7 +41,7 @@ public class JobService {
 
     public void deleteJob(int postId) {
 
-        repo.delete(postId);
+        repo.deleteById(postId);
     }
 
     public void load() {
