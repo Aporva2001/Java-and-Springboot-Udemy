@@ -13,23 +13,28 @@ public class SpringDataJpaApplication {
 
 		StudentRepo repo = context.getBean(StudentRepo.class);
 
-		Student s1= context.getBean(Student.class);
-		Student s2= context.getBean(Student.class);
-		Student s3= context.getBean(Student.class);
+//		Student s1= context.getBean(Student.class);
+//		Student s2= context.getBean(Student.class);
+//		Student s3= context.getBean(Student.class);
+//
+//		s1.setRollNo(101);
+//		s1.setName("Aporva");
+//		s1.setMarks(88);
+//
+//		s2.setRollNo(102);
+//		s2.setName("Karim");
+//		s2.setMarks(70);
+//
+//		s3.setRollNo(103);
+//		s3.setName("Sara");
+//		s3.setMarks(98);
+//
+//		repo.save(s1);
+//		repo.save(s2);
+//		repo.save(s3);
+		// It is used if we want to fetch all the data
 
-		s1.setRollNo(101);
-		s1.setName("Aporva");
-		s1.setMarks(88);
-
-		s2.setRollNo(102);
-		s2.setName("Karim");
-		s2.setMarks(70);
-
-		s3.setRollNo(103);
-		s3.setName("Sara");
-		s3.setMarks(98);
-
-		repo.save(s1);
+		System.out.println(repo.findAll());
 	}
 
 }
