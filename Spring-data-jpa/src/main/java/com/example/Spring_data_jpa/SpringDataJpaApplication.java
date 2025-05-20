@@ -46,6 +46,9 @@ public class SpringDataJpaApplication {
 		System.out.println(s.orElse(new Student()));
 		// It means if student is null return the new blank object for that case
 
+		// If we want to find by name then we have to write a method in studentRepo
+		System.out.println(repo.findByName("Aporva"));
+		System.out.println(repo.findByMarksGreaterThan(80));
 	}
 
 }
